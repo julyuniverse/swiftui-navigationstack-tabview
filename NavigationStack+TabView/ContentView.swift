@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    // view를 push 및 pop 할 수 있는 위치
     @State var mainStack: [NavigationType] = []
     
     var body: some View {
         NavigationStack(path: $mainStack) {
             // TabView가 있는 complex structure(복잡한 구조)
             TabView {
-                Text("Home")
+                HomeView()
                     .tabItem {
                         Image(systemName: "house.fill")
                     }
-                Text("Search")
+                SearchView()
                     .tabItem {
                         Image(systemName: "magnifyingglass")
                     }
@@ -102,6 +103,7 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+// NavigationStack item들의 enum case
 enum NavigationType: String, Hashable {
     case home = "HOME"
     case camera = "CAMERA VIEW"
